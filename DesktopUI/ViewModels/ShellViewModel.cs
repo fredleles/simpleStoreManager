@@ -1,4 +1,6 @@
-﻿using DesktopUI.Helpers.ViewModelFactory;
+﻿using DesktopUI.Events;
+using DesktopUI.Helpers.Events;
+using DesktopUI.Helpers.ViewModelFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,10 @@ using System.Windows.Controls;
 
 namespace DesktopUI.ViewModels
 {
-    internal class ShellViewModel : ViewModelBase
+    internal class ShellViewModel : ViewModelBase, IHandle<LogOnEvent>
     {
         private ViewModelBase? _currentViewModel;
+        private IDisposable unsubscriber;
 
         public ViewModelBase CurrentViewModel
         {
@@ -21,11 +24,16 @@ namespace DesktopUI.ViewModels
             }
         }
 
-        public ShellViewModel(LoginViewModel view)
+        public ShellViewModel(LoginViewModel view, IEventChannel<LogOnEvent> eventAggregator)
         {
             CurrentViewModel = view;
+            eventAggregator.Subscribe(this);
+
         }
 
-
+        public void Listener(LogOnEvent message)
+        {
+            // LogOn
+        }
     }
 }

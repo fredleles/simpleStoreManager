@@ -1,4 +1,5 @@
 ﻿using DesktopUI.Commands;
+using DesktopUI.Helpers.Events;
 using DesktopUI.Helpers.ViewModelFactory;
 using DesktopUI.ViewModels;
 using DesktopUI.Views;
@@ -26,11 +27,9 @@ namespace DesktopUI
             AppHost = Host.CreateDefaultBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddSingleton<ShellView>();
-                    services.AddSingleton<ShellViewModel>();
+                    services.AddMVVMs();
+                    services.AddEventChannels();
                     services.AddTransient<LoginCommand>();
-                    services.AddTransient<LoginViewModel>();
-                    //services.AddMVVMFactory<LoginViewModel>();
                 })
                 .Build();
         }

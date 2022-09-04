@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesktopUI.Events;
+using DesktopUI.Helpers.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +11,15 @@ namespace DesktopUI.Commands
 {
     internal class LoginCommand : CommandBase
     {
+        private readonly IEventChannel<LogOnEvent> _evt;
+
+        public LoginCommand(IEventChannel<LogOnEvent> evt)
+        {
+            _evt = evt;
+        }
         public override void Execute(object? parameter)
         {
-            throw new NotImplementedException();
+            _evt.PublishEvent(new LogOnEvent());
         }
     }
 }
