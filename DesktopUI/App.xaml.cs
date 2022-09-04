@@ -1,4 +1,5 @@
-﻿using DesktopUI.Helpers.ViewViewModelBind;
+﻿using DesktopUI.Commands;
+using DesktopUI.Helpers.ViewModelFactory;
 using DesktopUI.ViewModels;
 using DesktopUI.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,7 +28,9 @@ namespace DesktopUI
                 {
                     services.AddSingleton<ShellView>();
                     services.AddSingleton<ShellViewModel>();
-                    services.AddMVVMFactory<LoginView, LoginViewModel>();
+                    services.AddTransient<LoginCommand>();
+                    services.AddTransient<LoginViewModel>();
+                    //services.AddMVVMFactory<LoginViewModel>();
                 })
                 .Build();
         }

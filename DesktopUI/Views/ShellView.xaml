@@ -9,6 +9,15 @@
         Title="ShellView" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ContentControl Content="{Binding CurrentView}" />
+        <ContentControl Content="{ Binding CurrentViewModel }">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+                    <views:LoginView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:MainPageViewModel}">
+                    <views:MainPageView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>

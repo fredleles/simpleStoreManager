@@ -1,14 +1,27 @@
-﻿using System;
+﻿using DesktopUI.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace DesktopUI.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    internal class LoginViewModel : ViewModelBase
     {
-        private string _userName = "";
+        public ICommand LoginCommand { get; }
+        public LoginViewModel(LoginCommand command)
+        {
+            LoginCommand = command;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+        }
+
+        private string _userName = "fred";
 
         public string UserName
         {
@@ -18,17 +31,6 @@ namespace DesktopUI.ViewModels
                 _userName = value;
                 OnPropertyChanged(nameof(UserName));
             }
-        }
-
-        public LoginViewModel()
-        {
-
-            UserName = "fred";
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
         }
     }
 

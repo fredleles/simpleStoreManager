@@ -1,5 +1,4 @@
-﻿using DesktopUI.Helpers.ViewViewModelBind;
-using DesktopUI.Views;
+﻿using DesktopUI.Helpers.ViewModelFactory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,22 +8,24 @@ using System.Windows.Controls;
 
 namespace DesktopUI.ViewModels
 {
-    public class ShellViewModel
+    internal class ShellViewModel : ViewModelBase
     {
-        private UserControl? _currentView; //ViewModelBase
+        private ViewModelBase? _currentViewModel;
 
-        public UserControl CurrentView //ViewModelBase
+        public ViewModelBase CurrentViewModel
         {
-            get { return _currentView!; }
+            get { return _currentViewModel!; }
             set
             {
-                _currentView = value;
+                _currentViewModel = value;
             }
         }
 
-        public ShellViewModel(IWindowFactory<LoginView> view)
+        public ShellViewModel(LoginViewModel view)
         {
-            CurrentView = view.Show();
+            CurrentViewModel = view;
         }
+
+
     }
 }
