@@ -1,7 +1,8 @@
-﻿using DesktopUI.Commands;
+﻿using ApiDataAccess.Library.Api;
 using DesktopUI.Helpers.Events;
 using DesktopUI.Helpers.ViewModelFactory;
 using DesktopUI.ViewModels;
+using DesktopUI.ViewModels.Commands;
 using DesktopUI.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +31,8 @@ namespace DesktopUI
                     services.AddMVVMs();
                     services.AddEventChannels();
                     services.AddTransient<LoginCommand>();
+
+                    services.AddSingleton<IAPIHelper, APIHelper>();
                 })
                 .Build();
         }

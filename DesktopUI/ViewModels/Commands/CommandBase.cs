@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DesktopUI.Commands
+namespace DesktopUI.ViewModels.Commands
 {
     internal abstract class CommandBase : ICommand
     {

@@ -1,4 +1,4 @@
-﻿using DesktopUI.Commands;
+﻿using DesktopUI.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
