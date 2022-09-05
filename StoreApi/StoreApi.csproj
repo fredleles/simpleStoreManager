@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SQLData.Library\SQLData.Library.csproj" />
+  </ItemGroup>
+
 </Project>
