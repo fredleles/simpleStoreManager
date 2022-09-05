@@ -17,6 +17,7 @@ namespace DesktopUI.Helpers.ViewModelFactory
             services.AddSingleton<ShellView>();
             services.AddSingleton<ShellViewModel>();
             services.AddTransient<LoginViewModel>();
+            services.AddTransient<MainPageViewModel>();
         }
     }
 }

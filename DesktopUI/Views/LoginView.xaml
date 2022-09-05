@@ -49,7 +49,8 @@
 
         <!-- Login row -->
         <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center"
-                x:Name="LogIn" Padding="20 5" Command="{Binding LoginCommand}">
+                x:Name="LogIn" Padding="20 5" Command="{Binding LoginCommand}"
+                CommandParameter="{Binding ElementName=Password}">
             Log in
         </Button>
 

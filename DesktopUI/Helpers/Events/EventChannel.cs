@@ -1,5 +1,4 @@
-﻿using DesktopUI.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +40,7 @@ namespace DesktopUI.Helpers.Events
             }
         }
 
-        public void PublishEvent(TEvent _event)
+        public void PublishEvent(TEvent? _event)
         {
             foreach (var observer in observers)
             {

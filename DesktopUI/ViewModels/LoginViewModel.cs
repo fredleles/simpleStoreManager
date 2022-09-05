@@ -10,7 +10,7 @@ namespace DesktopUI.ViewModels
 {
     internal class LoginViewModel : ViewModelBase
     {
-        public ICommand LoginCommand { get; }
+        public LoginCommand LoginCommand { get; }
         public LoginViewModel(LoginCommand command)
         {
             LoginCommand = command;
@@ -21,7 +21,7 @@ namespace DesktopUI.ViewModels
             base.Dispose();
         }
 
-        private string _userName = "fred";
+        private string _userName = "";
 
         public string UserName
         {
@@ -29,9 +29,9 @@ namespace DesktopUI.ViewModels
             set
             {
                 _userName = value;
+                LoginCommand.UserName = _userName;
                 OnPropertyChanged(nameof(UserName));
             }
         }
     }
-
 }

@@ -1,6 +1,6 @@
 ﻿using DesktopUI.Events;
 using DesktopUI.Helpers.Events;
-using DesktopUI.Helpers.ViewModelFactory;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,8 @@ namespace DesktopUI.ViewModels
     internal class ShellViewModel : ViewModelBase, IHandle<LogOnEvent>
     {
         private ViewModelBase? _currentViewModel;
-        private IDisposable unsubscriber;
+        private IServiceProvider _provider;
+        // private IDisposable unsubscriber;
 
         public ViewModelBase CurrentViewModel
         {
@@ -21,19 +22,21 @@ namespace DesktopUI.ViewModels
             set
             {
                 _currentViewModel = value;
+                OnPropertyChanged(nameof(CurrentViewModel));
             }
         }
 
-        public ShellViewModel(LoginViewModel view, IEventChannel<LogOnEvent> eventAggregator)
+        public ShellViewModel(LoginViewModel view, IEventChannel<LogOnEvent> eventAggregator, IServiceProvider provider)
         {
             CurrentViewModel = view;
-            eventAggregator.Subscribe(this);
+            _provider = provider;
 
+            eventAggregator.Subscribe(this);
         }
 
         public void Listener(LogOnEvent message)
         {
-            // LogOn
+            CurrentViewModel = _provider.GetService<MainPageViewModel>()!;
         }
     }
 }
