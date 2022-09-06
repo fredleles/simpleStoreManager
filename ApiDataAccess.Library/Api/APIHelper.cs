@@ -11,7 +11,7 @@ namespace ApiDataAccess.Library.Api
 {
     public class APIHelper : IAPIHelper
     {
-        private HttpClient _apiClient;
+        private HttpClient? _apiClient;
         public APIHelper()
         {
             InitializeClient();
@@ -21,7 +21,7 @@ namespace ApiDataAccess.Library.Api
         {
             get
             {
-                return _apiClient;
+                return _apiClient!;
             }
         }
 
@@ -44,7 +44,7 @@ namespace ApiDataAccess.Library.Api
                 new KeyValuePair<string, string>("password", password),
             });
 
-            using (HttpResponseMessage response = await _apiClient.PostAsync("/token", data))
+            using (HttpResponseMessage response = await _apiClient!.PostAsync("/token", data))
             {
                 if (response.IsSuccessStatusCode)
                 {

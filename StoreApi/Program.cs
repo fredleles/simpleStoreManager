@@ -1,3 +1,5 @@
+using SQLData.Library.DataAccess;
+
 namespace StoreApi
 {
     public class Program
@@ -9,6 +11,9 @@ namespace StoreApi
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+            builder.Services.AddTransient<IUserData, UserData>();
 
             var app = builder.Build();
 

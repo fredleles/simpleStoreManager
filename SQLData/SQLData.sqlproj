@@ -65,4 +65,9 @@
   <ItemGroup>
     <None Include="PublishLocations\SQLData.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Stored Procedures\spUserGetInfo.sql" />
+    <Build Include="dbo\Stored Procedures\spUserGetAuth.sql" />
+  </ItemGroup>
 </Project>
