@@ -1,7 +1,10 @@
-﻿namespace SQLData.Library.DataAccess
+﻿using SQLData.Library.Models;
+
+namespace SQLData.Library.DataAccess
 {
     public interface IUserData
     {
-        Task<bool> VerifyLogin(string username, string password);
+        List<UserModel> GetUserById(string Id);
+        string VerifyLogin(string username, string password);
     }
 }

@@ -36,6 +36,7 @@ namespace DesktopUI.ViewModels.Commands
         {
             try
             {
+                // TODO - Tratar a resposta da API (token)
                 var result = await _apiHelper.Authenticate(UserName, Password);
                 _evt.PublishEvent(new LogOnEvent());
             }

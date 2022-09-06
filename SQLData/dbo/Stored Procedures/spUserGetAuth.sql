@@ -5,7 +5,7 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	SELECT COUNT(Id)
+	SELECT Id
 	FROM [dbo].[User]
 	WHERE EmailAddress = @EmailAddress AND [Password] = @Password;
 END

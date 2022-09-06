@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLData.Library.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,16 +10,21 @@ namespace SQLData.Library.DataAccess
     public class UserData : IUserData
     {
         private readonly ISqlDataAccess _sql;
+        public record struct UserAuth(string Id);
         public UserData(ISqlDataAccess sql)
         {
             _sql = sql;
         }
-        public async Task<bool> VerifyLogin(string username, string password)
-        {
-            var scalar = await _sql.VerifyLogin(username, password);
+        public string VerifyLogin(string username, string password)
+        {            
+            var user = _sql.LoadData<UserAuth, dynamic>("dbo.spUserGetAuth", new { EmailAddress = username, Password = password });
 
-            if ((int)scalar == 0) return false;
-            return true;
+            return user[0].Id;
+        }
+
+        public List<UserModel> GetUserById(string Id)
+        {
+            return _sql.LoadData<UserModel, dynamic>("dbo.spUserGetInfo", new { Id });
         }
     }
 }

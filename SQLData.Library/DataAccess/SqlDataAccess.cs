@@ -30,16 +30,5 @@ namespace SQLData.Library.DataAccess
                 return rows;
             }
         }
-
-        public async Task<object> VerifyLogin(string username, string password)
-        {
-            using (IDbConnection connection = new SqlConnection(connectionString))
-            {
-                 object scalar = await connection.ExecuteScalarAsync("spUserGetAuth", new { EmailAddress = username, Password = password },
-                    commandType: CommandType.StoredProcedure);
-
-                return scalar;
-            }
-        }
     }
 }

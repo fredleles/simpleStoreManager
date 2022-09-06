@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.22.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SQLData.Library\SQLData.Library.csproj" />
   </ItemGroup>
 
