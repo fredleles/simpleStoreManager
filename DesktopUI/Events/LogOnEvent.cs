@@ -9,6 +9,13 @@ namespace DesktopUI.Events
 {
     internal class LogOnEvent : IEvent
     {
+        public int Code { get; set; }
+        public string Message { get; set; }
 
+        public LogOnEvent(int code, string message)
+        {
+            Code = code;
+            Message = message;
+        }
     }
 }

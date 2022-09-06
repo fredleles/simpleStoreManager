@@ -1,4 +1,5 @@
 ﻿using ApiDataAccess.Library.Api;
+using ApiDataAccess.Library.Models;
 using DesktopUI.Helpers.Events;
 using DesktopUI.Helpers.ViewModelFactory;
 using DesktopUI.ViewModels;
@@ -33,6 +34,7 @@ namespace DesktopUI
                     services.AddTransient<LoginCommand>();
 
                     services.AddSingleton<IAPIHelper, APIHelper>();
+                    services.AddSingleton<ILoggedInUserModel, LoggedInUserModel>();
                 })
                 .Build();
         }

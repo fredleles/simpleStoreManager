@@ -7,6 +7,6 @@
              mc:Ignorable="d" Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="MAIN PAGE" />
+        <TextBlock Text="{Binding UserName}" />
     </Grid>
 </UserControl>

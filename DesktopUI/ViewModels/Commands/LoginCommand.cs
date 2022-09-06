@@ -36,13 +36,13 @@ namespace DesktopUI.ViewModels.Commands
         {
             try
             {
-                // TODO - Tratar a resposta da API (token)
                 var result = await _apiHelper.Authenticate(UserName, Password);
-                _evt.PublishEvent(new LogOnEvent());
+                await _apiHelper.GetLoggedInUserInfo(result.Access_Token);
+                _evt.PublishEvent(new LogOnEvent(200, result.UserName));
             }
             catch (Exception ex)
             {
-                throw;
+                _evt.PublishEvent(new LogOnEvent(500, ex.Message));
             }
         }
     }

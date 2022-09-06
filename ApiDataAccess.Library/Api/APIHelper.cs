@@ -12,9 +12,11 @@ namespace ApiDataAccess.Library.Api
     public class APIHelper : IAPIHelper
     {
         private HttpClient? _apiClient;
-        public APIHelper()
+        private ILoggedInUserModel _loggedInUser;
+        public APIHelper(ILoggedInUserModel loggedInUser)
         {
             InitializeClient();
+            _loggedInUser = loggedInUser;
         }
 
         public HttpClient ApiClient
@@ -63,9 +65,31 @@ namespace ApiDataAccess.Library.Api
             throw new NotImplementedException();
         }
 
-        public Task GetLoggedInUserInfo(string token)
+        public async Task GetLoggedInUserInfo(string token)
         {
-            throw new NotImplementedException();
+            _apiClient!.DefaultRequestHeaders.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Clear();
+            _apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _apiClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+
+            using (HttpResponseMessage response = await _apiClient.GetAsync("/api/User"))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadFromJsonAsync<LoggedInUserModel>();
+                    _loggedInUser.CreatedDate = result!.CreatedDate;
+                    _loggedInUser.EmailAddress = result.EmailAddress;
+                    _loggedInUser.FirstName = result.FirstName;
+                    _loggedInUser.LastName = result.LastName;
+                    _loggedInUser.Id = result.Id;
+                    _loggedInUser.Token = token;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+
+            }
         }
     }
 }

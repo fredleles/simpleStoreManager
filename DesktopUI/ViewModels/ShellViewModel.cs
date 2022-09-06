@@ -36,7 +36,11 @@ namespace DesktopUI.ViewModels
 
         public void Listener(LogOnEvent message)
         {
-            CurrentViewModel = _provider.GetService<MainPageViewModel>()!;
+            if (message.Code == 200)
+            {
+                CurrentViewModel = _provider.GetService<MainPageViewModel>()!;
+            }
+            
         }
     }
 }
