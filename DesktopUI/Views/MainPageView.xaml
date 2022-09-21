@@ -6,7 +6,26 @@
              xmlns:local="clr-namespace:DesktopUI.Views"
              mc:Ignorable="d" Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="{Binding UserName}" />
-    </Grid>
+    <DockPanel Background="#F2F8FF">
+        <StackPanel DockPanel.Dock="Left" Width="180" Background="White">
+            <TextBlock Text="Simple Store Manager" Foreground="#5056BC" FontSize="13" Margin="10 10 10 40" HorizontalAlignment="Center"
+                       FontWeight="Bold" TextWrapping="Wrap"/>
+
+            <TextBlock Text="PDV" Margin="20 10 0 0" />
+            <TextBlock Text="Produtos" Margin="20 10 0 0" />
+            <TextBlock Text="Vendas" Margin="20 10 0 0" />
+            <TextBlock Text="Usuários" Margin="20 10 0 0" />
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Right" Width="50" Background="#5056BC">
+
+        </StackPanel>
+
+        <Grid  Margin="5 10 5 0">
+            <!--<components:SomeView Grid.Row="0" Grid.Column="1"/>-->
+            <!--content control-->
+            <TextBlock Text="content" />
+        </Grid>
+        
+    </DockPanel>
 </UserControl>
