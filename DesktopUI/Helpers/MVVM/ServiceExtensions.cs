@@ -18,6 +18,10 @@ namespace DesktopUI.Helpers.ViewModelFactory
             services.AddSingleton<ShellViewModel>();
             services.AddTransient<LoginViewModel>();
             services.AddTransient<MainPageViewModel>();
+            services.AddTransient<PdvViewModel>();
+            services.AddTransient<ProductsViewModel>();
+            services.AddTransient<SalesViewModel>();
+            services.AddTransient<UsersViewModel>();
         }
     }
 }

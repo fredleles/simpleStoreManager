@@ -13,6 +13,7 @@ namespace DesktopUI.Helpers.Events
         internal static void AddEventChannels(this IServiceCollection services)
         {
             services.AddSingleton<IEventChannel<LogOnEvent>, EventChannel<LogOnEvent>>();
+            services.AddSingleton<IEventChannel<ChangeViewEvent>, EventChannel<ChangeViewEvent>>();
         }
     }
 }

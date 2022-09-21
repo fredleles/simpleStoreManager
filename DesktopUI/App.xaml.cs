@@ -31,6 +31,7 @@ namespace DesktopUI
                 {
                     services.AddMVVMs();
                     services.AddEventChannels();
+                    services.AddCommands();
                     services.AddTransient<LoginCommand>();
 
                     services.AddSingleton<IAPIHelper, APIHelper>();
