@@ -5,16 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DesktopUI.Views"
              mc:Ignorable="d" Background="White"
+             xmlns:views="clr-namespace:DesktopUI.Views"
+             xmlns:viewmodels="clr-namespace:DesktopUI.ViewModels"
              d:DesignHeight="450" d:DesignWidth="800">
+    
     <DockPanel Background="#F2F8FF">
         <StackPanel DockPanel.Dock="Left" Width="180" Background="White">
             <TextBlock Text="Simple Store Manager" Foreground="#5056BC" FontSize="13" Margin="10 10 10 40" HorizontalAlignment="Center"
                        FontWeight="Bold" TextWrapping="Wrap"/>
 
-            <TextBlock Text="PDV" Margin="20 10 0 0" />
-            <TextBlock Text="Produtos" Margin="20 10 0 0" />
-            <TextBlock Text="Vendas" Margin="20 10 0 0" />
-            <TextBlock Text="Usuários" Margin="20 10 0 0" />
+            <Border Margin="20 10 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding NavigateToPDV}" />
+                    </StackPanel.InputBindings>
+                    <TextBlock Text="PDV" />
+                </StackPanel>
+            </Border>
+            <Border Margin="20 10 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding NavigateToProducts}" />
+                    </StackPanel.InputBindings>
+                    <TextBlock Text="Produtos" />
+                </StackPanel>
+            </Border>
+            <Border Margin="20 10 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding NavigateToSales}" />
+                    </StackPanel.InputBindings>
+                    <TextBlock Text="Vendas" />
+                </StackPanel>
+            </Border>
+            <Border Margin="20 10 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.InputBindings>
+                        <MouseBinding Gesture="LeftClick" Command="{Binding NavigateToUsers}" />
+                    </StackPanel.InputBindings>
+                    <TextBlock Text="Usuários" />
+                </StackPanel>
+            </Border>
         </StackPanel>
 
         <StackPanel DockPanel.Dock="Right" Width="50" Background="#5056BC">
@@ -22,9 +53,22 @@
         </StackPanel>
 
         <Grid  Margin="5 10 5 0">
-            <!--<components:SomeView Grid.Row="0" Grid.Column="1"/>-->
-            <!--content control-->
-            <TextBlock Text="content" />
+            <ContentControl Content="{ Binding CurrentViewModel }">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewmodels:PdvViewModel}">
+                        <views:PdvView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:ProductsViewModel}">
+                        <views:ProductsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:SalesViewModel}">
+                        <views:SalesView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:UsersViewModel}">
+                        <views:UsersView />
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
         </Grid>
         
     </DockPanel>
