@@ -21,10 +21,13 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 0 0 20"
-                   HorizontalAlignment="Center" FontSize="64" FontFamily="Segoe UI Light">
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Background="#5056BC" Height="80">
+            <TextBlock Margin="0 20 0 0" HorizontalAlignment="Center" FontSize="40" FontFamily="Segoe UI Light"
+                       Foreground="White">
             Login Form
-        </TextBlock>
+            </TextBlock>
+        </StackPanel>
 
         <!-- Error message row -->
         <!--<TextBlock x:Name="ErrorMessage"
@@ -34,11 +37,11 @@
                    />-->
 
         <!-- Username row -->
-        <TextBlock Grid.Row="2" Grid.Column="1" Margin="0 0 5 10">
+        <TextBlock Grid.Row="2" Grid.Column="1" Margin="0 20 5 10">
             Username:
         </TextBlock>
         <TextBox x:Name="UserName" Grid.Row="2" Grid.Column="2" MinWidth="350" Text="{Binding UserName}"
-                 Margin="0 0 0 10"/>
+                 Margin="0 20 0 10"/>
 
         <!-- Password row -->
         <TextBlock Grid.Row="3" Grid.Column="1" Margin="0 0 5 20">
