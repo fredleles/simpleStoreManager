@@ -7,7 +7,64 @@
              mc:Ignorable="d"
              Background="#F2F8FF"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="UsersView" />
+    <Grid Grid.IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition SharedSizeGroup="Col1" />
+            <ColumnDefinition SharedSizeGroup="Col2" />
+            <ColumnDefinition SharedSizeGroup="Col3" />
+            <ColumnDefinition SharedSizeGroup="Col4" />
+            <ColumnDefinition SharedSizeGroup="Col5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Usuários" Grid.Row="0" Grid.Column="1" Padding="5" />
+        <Button Content="Novo Usuário" Grid.Row="0" Grid.Column="5" Width="90" HorizontalAlignment="Right"
+                Background="#5056BC" Foreground="White" Margin="0 0 0 5"/>
+
+        <Border Background="LightGray" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" BorderThickness="0.5" BorderBrush="Black" />
+        <TextBlock Text="Nome" Grid.Row="1" Grid.Column="1" Padding="5" FontWeight="Bold" />
+        <TextBlock Text="Cargo" Grid.Row="1" Grid.Column="2" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Email" Grid.Row="1" Grid.Column="3" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Ações" Grid.Row="1" Grid.Column="4" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Criado em" Grid.Row="1" Grid.Column="5" Padding="1 5" FontWeight="Bold" />
+
+        <ListView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" MinHeight="200"
+                 MinWidth="150" ItemsSource="{Binding Users}">
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col1" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col2" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col3" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col4" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col5" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding FullName}" Padding="1 0" />
+                        <TextBlock Grid.Column="1" Text="{Binding Role}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="2" Text="{Binding Email}" Padding="1 0" Margin="20 0" />
+                        <WrapPanel Grid.Column="3">
+                            <Button Content="Editar" Width="50" Background="Goldenrod" />
+                            <Button Content="Excluir" Width="50" Background="IndianRed" />
+                        </WrapPanel>
+                        <TextBlock Grid.Column="4" Text="{Binding CreatedAt}" Padding="1 0" Margin="20 0" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>
