@@ -8,6 +8,79 @@
              Background="#F2F8FF"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="PdvView" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="PDV" Grid.Row="0" Grid.Column="1" Padding="5" />
+
+        <Grid Grid.Column="1" Grid.Row="2" MinWidth="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Produto" Padding="5" FontWeight="Bold" Background="LightGray"/>
+            <TextBox Grid.Column="1" Padding="5" />
+        </Grid>
+
+        <Border BorderThickness="0.5" BorderBrush="Black" Grid.Column="1" Grid.Row="3" Margin="10">
+            <Image />
+        </Border>
+
+        <StackPanel Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBlock Text="Item: " />
+            <TextBlock Text="Produto1" TextWrapping="Wrap" FontSize="15" />
+        </StackPanel>
+
+        <DockPanel Grid.Column="1" Grid.Row="5" Margin="0 10 0 0">
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Estoque: " />
+                <TextBlock Text="20" FontSize="15" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right">
+                <TextBlock Text="Preço: " />
+                <TextBlock Text="R$ 20.00" FontSize="20" />
+            </StackPanel>
+        </DockPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" MinWidth="150">
+            <Button Content="Adicionar" Width="80" Margin="0 20" Background="Goldenrod" />
+            <Button Content="Remover" Width="80" Margin="0 20" Background="IndianRed" Foreground="White" />
+        </StackPanel>
+
+        <TextBlock Text="Carrinho" Padding="5" FontWeight="Bold" Background="LightGray"
+                        Grid.Row="2" Grid.Column="3"/>
+        <ListBox Grid.Row="3" Grid.Column="3"
+                 MinHeight="200" MinWidth="150">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding SomeText}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <DockPanel Grid.Row="4" Grid.Column="3">
+            <TextBlock Text="Total: " Margin="0 0 15 0" />
+            <TextBlock Text="R$0.00" TextAlignment="Right" FontSize="30" FontWeight="Bold" />
+        </DockPanel>
+
+        <Button Grid.Row="5" Grid.Column="3" Content="Finalizar Compra"
+                Margin="0 20 0 0" Padding="5" Background="#5056BC" Foreground="White"/>
     </Grid>
 </UserControl>
