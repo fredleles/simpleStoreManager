@@ -8,7 +8,7 @@
              Background="#F2F8FF"
              MinWidth="900"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -17,26 +17,28 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition SharedSizeGroup="Col2" />
+            <ColumnDefinition SharedSizeGroup="Col3" />
+            <ColumnDefinition SharedSizeGroup="Col4" />
+            <ColumnDefinition SharedSizeGroup="Col5" />
+            <ColumnDefinition SharedSizeGroup="Col6" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Produtos" Grid.Row="0" Padding="5" />
+        <TextBlock Text="Produtos" Grid.Row="0" Grid.Column="1" Padding="5" />
         <Button Content="Novo Produto" Grid.Row="0" Grid.Column="6" Width="90" HorizontalAlignment="Right"
                 Background="#5056BC" Foreground="White" Margin="0 0 0 5"/>
         
-        <Border Background="LightGray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" BorderThickness="0.5" BorderBrush="Black" />
-        <TextBlock Text="Id" Grid.Row="1" Grid.Column="0" Padding="5" FontWeight="Bold" />
-        <TextBlock Text="Item" Grid.Row="1" Grid.Column="1" Padding="1 5" FontWeight="Bold" />
-        <TextBlock Text="Cód. Barras" Grid.Row="1" Grid.Column="2" Padding="1 5" FontWeight="Bold" />
-        <TextBlock Text="Preço Venda" Grid.Row="1" Grid.Column="3" Padding="1 5" FontWeight="Bold" />
-        <TextBlock Text="Estoque" Grid.Row="1" Grid.Column="4" Padding="1 5" FontWeight="Bold" />
-        <TextBlock Text="Ações" Grid.Row="1" Grid.Column="5" Padding="1 5" FontWeight="Bold" />
+        <Border Background="LightGray" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="6" BorderThickness="0.5" BorderBrush="Black" />
+        <TextBlock Text="Id" Grid.Row="1" Grid.Column="1" Padding="5" FontWeight="Bold" />
+        <TextBlock Text="Item" Grid.Row="1" Grid.Column="2" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Cód. Barras" Grid.Row="1" Grid.Column="3" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Preço Venda" Grid.Row="1" Grid.Column="4" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Estoque" Grid.Row="1" Grid.Column="5" Padding="1 5" FontWeight="Bold" Margin="20 0" />
+        <TextBlock Text="Ações" Grid.Row="1" Grid.Column="6" Padding="1 5" FontWeight="Bold" />
 
-        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" MinHeight="200"
+        <ListView Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6" MinHeight="200"
                  MinWidth="150" ItemsSource="{Binding Products}">
 
             <ListView.ItemContainerStyle>
@@ -48,19 +50,19 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col2" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col3" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col4" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col5" />
+                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col6"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding Id}" Padding="1 0" />
-                        <TextBlock Grid.Column="1" Text="{Binding ProductName}" Padding="1 0" />
-                        <TextBlock Grid.Column="2" Text="{Binding Barcode}" Padding="1 0" />
-                        <TextBlock Grid.Column="3" Text="{Binding RetailPrice}" Padding="1 0" />
-                        <TextBlock Grid.Column="4" Text="{Binding QuantityInStock}" Padding="1 0" />
+                        <TextBlock Grid.Column="1" Text="{Binding ProductName}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="2" Text="{Binding Barcode}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="3" Text="{Binding RetailPrice}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="4" Text="{Binding QuantityInStock}" Padding="1 0" Margin="20 0" />
                         <WrapPanel Grid.Column="5">
                             <Button Content="Editar" Width="50" Background="Goldenrod" />
                             <Button Content="Excluir" Width="50" Background="IndianRed" />
