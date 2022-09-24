@@ -26,5 +26,10 @@ namespace SQLData.Library.DataAccess
         {
             return _sql.LoadData<UserModel, dynamic>("dbo.spUserGetInfo", new { Id });
         }
+
+        public List<UserModel> GetAll()
+        {
+            return _sql.LoadData<UserModel, dynamic>("dbo.spUserGetAll", new { });
+        }
     }
 }

@@ -24,5 +24,13 @@ namespace StoreApi.Controllers
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return _userData.GetUserById(userId).First();
         }
+
+        [HttpGet]
+        [Route("All")]
+        [Authorize]
+        public List<UserModel> GetAll()
+        {
+            return _userData.GetAll();
+        }
     }
 }
