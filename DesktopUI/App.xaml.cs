@@ -37,6 +37,7 @@ namespace DesktopUI
                     services.AddSingleton<IAPIHelper, APIHelper>();
                     services.AddSingleton<ILoggedInUserModel, LoggedInUserModel>();
                     services.AddTransient<IProductEndpoint, ProductEndpoint>();
+                    services.AddTransient<IUserEndpoint, UserEndpoint>();
                 })
                 .Build();
         }

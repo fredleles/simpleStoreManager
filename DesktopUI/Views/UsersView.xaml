@@ -54,14 +54,14 @@
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col5" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding FullName}" Padding="1 0" />
-                        <TextBlock Grid.Column="1" Text="{Binding Role}" Padding="1 0" Margin="20 0" />
-                        <TextBlock Grid.Column="2" Text="{Binding Email}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="0" Text="{Binding FirstName}" Padding="1 0" />
+                        <TextBlock Grid.Column="1" Text="" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="2" Text="{Binding EmailAddress}" Padding="1 0" Margin="20 0" />
                         <WrapPanel Grid.Column="3">
                             <Button Content="Editar" Width="50" Background="Goldenrod" />
                             <Button Content="Excluir" Width="50" Background="IndianRed" />
                         </WrapPanel>
-                        <TextBlock Grid.Column="4" Text="{Binding CreatedAt}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="4" Text="{Binding CreatedDate}" Padding="1 0" Margin="20 0" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
