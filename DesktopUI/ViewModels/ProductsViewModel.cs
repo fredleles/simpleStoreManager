@@ -1,4 +1,6 @@
-﻿using ApiDataAccess.Library.Models;
+﻿using ApiDataAccess.Library.Api;
+using ApiDataAccess.Library.Models;
+using DesktopUI.Helpers;
 using DesktopUI.Models;
 using System;
 using System.Collections.Generic;
@@ -11,28 +13,30 @@ namespace DesktopUI.ViewModels
 {
     internal class ProductsViewModel : ViewModelBase
     {
-        public ProductsViewModel()
+        private readonly IProductEndpoint _productEndpoint;
+        public ProductsViewModel(IProductEndpoint productEndpoint)
         {
-            _products.Add(new ProductDisplayListModel()
-            {
-                Id = 1,
-                ProductName = "Produto1",
-                Barcode = "123445",
-                QuantityInStock = 10,
-                RetailPrice = 9.90m,
-            });
-            _products.Add(new ProductDisplayListModel()
-            {
-                Id = 2,
-                ProductName = "Produto2",
-                Barcode = "123445",
-                QuantityInStock = 1,
-                RetailPrice = 99.90m,
-            });
+            _productEndpoint = productEndpoint;
+            LoadProducts();
         }
 
-        private BindingList<ProductDisplayListModel> _products = new();
-        public BindingList<ProductDisplayListModel> Products
+        private async void LoadProducts()
+        {
+            try
+            {
+                var productList = await _productEndpoint.GetAll();
+                var produtos = ModelMapping.MapList<ProductModel, ProductDisplayListModel>(productList);
+                Products = new BindingList<ProductDisplayListModel>(produtos);
+            }
+            catch
+            {
+                // caso nao autorizado
+            }
+        }
+
+
+        private BindingList<ProductDisplayListModel>? _products;
+        public BindingList<ProductDisplayListModel>? Products
         {
             get { return _products; }
             set
