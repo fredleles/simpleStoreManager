@@ -13,6 +13,7 @@ namespace DesktopUI.Helpers.ModelsMapping
         {
             services.AddTransient<ProductDisplayListMapping>();
             services.AddTransient<UsersDisplayListMapping>();
+            services.AddTransient<SaleDisplayListMapping>();
         }
     }
 }

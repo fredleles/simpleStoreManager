@@ -34,7 +34,6 @@ namespace DesktopUI
                     services.AddEventChannels();
                     services.AddCommands();
                     services.AddModelMappings();
-                    services.AddTransient<LoginCommand>();
 
                     services.AddSingleton<IAPIHelper, APIHelper>();
                     services.AddSingleton<ILoggedInUserModel, LoggedInUserModel>();

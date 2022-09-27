@@ -1,5 +1,7 @@
 ﻿using ApiDataAccess.Library.Api;
 using ApiDataAccess.Library.Models;
+using DesktopUI.Helpers.ModelsMapping;
+using DesktopUI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +14,12 @@ namespace DesktopUI.ViewModels
     internal class SalesViewModel : ViewModelBase
     {
         private readonly ISaleEndpoint _saleEndpoint;
+        private readonly SaleDisplayListMapping _mapping;
 
-        public SalesViewModel(ISaleEndpoint saleEndpoint)
+        public SalesViewModel(ISaleEndpoint saleEndpoint, SaleDisplayListMapping mapping)
         {
             _saleEndpoint = saleEndpoint;
+            _mapping = mapping;
             LoadSales();
         }
 
@@ -24,7 +28,8 @@ namespace DesktopUI.ViewModels
             try
             {
                 var salesList = await _saleEndpoint.GetAll();
-                Sales = new BindingList<SaleModel>(salesList);
+                var sales = _mapping.CreateMap(salesList);
+                Sales = new BindingList<SaleDisplayListModel>(sales);
             }
             catch
             {
@@ -32,9 +37,9 @@ namespace DesktopUI.ViewModels
             }
         }
 
-        private BindingList<SaleModel>? _sales;
+        private BindingList<SaleDisplayListModel>? _sales;
 
-        public BindingList<SaleModel>? Sales
+        public BindingList<SaleDisplayListModel>? Sales
         {
             get { return _sales; }
             set

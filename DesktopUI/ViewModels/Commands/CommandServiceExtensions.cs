@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DesktopUI.ViewModels.Commands.SalesView;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace DesktopUI.ViewModels.Commands
             services.AddTransient<INavigateCommand<ProductsViewModel>, NavigateCommand<ProductsViewModel>>();
             services.AddTransient<INavigateCommand<SalesViewModel>, NavigateCommand<SalesViewModel>>();
             services.AddTransient<INavigateCommand<UsersViewModel>, NavigateCommand<UsersViewModel>>();
+
+            services.AddTransient<LoginCommand>();
         }
     }
 }
