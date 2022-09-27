@@ -1,1 +1,3 @@
 # simpleStoreManager
+
+Em construção
