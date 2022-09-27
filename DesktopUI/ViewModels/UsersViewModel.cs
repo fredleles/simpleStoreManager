@@ -1,5 +1,6 @@
 ﻿using ApiDataAccess.Library.Api;
-using ApiDataAccess.Library.Models;
+using DesktopUI.Helpers.ModelsMapping;
+using DesktopUI.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +13,12 @@ namespace DesktopUI.ViewModels
     internal class UsersViewModel : ViewModelBase
     {
         IUserEndpoint _userEndpoint;
+        private UsersDisplayListMapping _mapping;
 
-        public UsersViewModel(IUserEndpoint userEndpoint)
+        public UsersViewModel(IUserEndpoint userEndpoint, UsersDisplayListMapping mapping)
         {
             _userEndpoint = userEndpoint;
+            _mapping = mapping;
             LoadUsers();
         }
 
@@ -24,16 +27,17 @@ namespace DesktopUI.ViewModels
             try
             {
                 var userList = await _userEndpoint.GetAll();
-                Users = new BindingList<UserModel>(userList);
+                var users = _mapping.CreateMap(userList);
+                Users = new BindingList<UsersDisplayListModel>(users);
             }
             catch
             {
-
+                // TODO
             }
         }
 
-        private BindingList<UserModel>? _users;
-        public BindingList<UserModel>? Users
+        private BindingList<UsersDisplayListModel>? _users;
+        public BindingList<UsersDisplayListModel>? Users
         {
             get { return _users; }
             set

@@ -20,7 +20,7 @@
             <ColumnDefinition SharedSizeGroup="Col2" />
             <ColumnDefinition SharedSizeGroup="Col3" />
             <ColumnDefinition SharedSizeGroup="Col4" />
-            <ColumnDefinition SharedSizeGroup="Col5" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -51,17 +51,17 @@
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col2" />
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col3" />
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col4" />
-                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col5" />
+                            <ColumnDefinition Width="100" />
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding FirstName}" Padding="1 0" />
-                        <TextBlock Grid.Column="1" Text="" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="0" Text="{Binding FullName}" Padding="1 0" />
+                        <TextBlock Grid.Column="1" Text="{Binding Role}" Padding="1 0" Margin="20 0" />
                         <TextBlock Grid.Column="2" Text="{Binding EmailAddress}" Padding="1 0" Margin="20 0" />
-                        <WrapPanel Grid.Column="3">
+                        <WrapPanel Grid.Column="3" Margin="20 0">
                             <Button Content="Editar" Width="50" Background="Goldenrod" />
                             <Button Content="Excluir" Width="50" Background="IndianRed" />
                         </WrapPanel>
-                        <TextBlock Grid.Column="4" Text="{Binding CreatedDate}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="4" Text="{Binding CreatedDate}" Padding="1 0" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -12,6 +12,7 @@ namespace DesktopUI.Helpers.ModelsMapping
         internal static void AddModelMappings(this IServiceCollection services)
         {
             services.AddTransient<ProductDisplayListMapping>();
+            services.AddTransient<UsersDisplayListMapping>();
         }
     }
 }
