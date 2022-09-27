@@ -1,6 +1,5 @@
 ﻿using ApiDataAccess.Library.Api;
-using ApiDataAccess.Library.Models;
-using DesktopUI.Helpers;
+using DesktopUI.Helpers.ModelsMapping;
 using DesktopUI.Models;
 using System;
 using System.Collections.Generic;
@@ -14,9 +13,11 @@ namespace DesktopUI.ViewModels
     internal class ProductsViewModel : ViewModelBase
     {
         private readonly IProductEndpoint _productEndpoint;
-        public ProductsViewModel(IProductEndpoint productEndpoint)
+        private readonly ProductDisplayListMapping _mapping;
+        public ProductsViewModel(IProductEndpoint productEndpoint, ProductDisplayListMapping mapping)
         {
             _productEndpoint = productEndpoint;
+            _mapping = mapping;
             LoadProducts();
         }
 
@@ -25,8 +26,8 @@ namespace DesktopUI.ViewModels
             try
             {
                 var productList = await _productEndpoint.GetAll();
-                var produtos = ModelMapping.MapList<ProductModel, ProductDisplayListModel>(productList);
-                Products = new BindingList<ProductDisplayListModel>(produtos);
+                var products = _mapping.CreateMap(productList);
+                Products = new BindingList<ProductDisplayListModel>(products);
             }
             catch
             {

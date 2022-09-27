@@ -1,6 +1,7 @@
 ﻿using ApiDataAccess.Library.Api;
 using ApiDataAccess.Library.Models;
 using DesktopUI.Helpers.Events;
+using DesktopUI.Helpers.ModelsMapping;
 using DesktopUI.Helpers.ViewModelFactory;
 using DesktopUI.ViewModels;
 using DesktopUI.ViewModels.Commands;
@@ -32,6 +33,7 @@ namespace DesktopUI
                     services.AddMVVMs();
                     services.AddEventChannels();
                     services.AddCommands();
+                    services.AddModelMappings();
                     services.AddTransient<LoginCommand>();
 
                     services.AddSingleton<IAPIHelper, APIHelper>();
