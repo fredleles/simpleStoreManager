@@ -44,5 +44,18 @@ namespace DesktopUI.ViewModels
             }
         }
 
+        private BindingList<SaleProductModel>? _saleProducts;
+
+        public BindingList<SaleProductModel>? SaleProducts
+        {
+            get { return _saleProducts; }
+            set
+            {
+                _saleProducts = value;
+                OnPropertyChanged(nameof(SaleProducts));
+            }
+        }
+
+
     }
 }
