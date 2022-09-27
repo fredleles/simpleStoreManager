@@ -40,6 +40,7 @@ namespace DesktopUI
                     services.AddSingleton<ILoggedInUserModel, LoggedInUserModel>();
                     services.AddTransient<IProductEndpoint, ProductEndpoint>();
                     services.AddTransient<IUserEndpoint, UserEndpoint>();
+                    services.AddTransient<ISaleEndpoint, SaleEndpoint>();
                 })
                 .Build();
         }

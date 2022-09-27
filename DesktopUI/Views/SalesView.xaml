@@ -21,7 +21,7 @@
             <ColumnDefinition SharedSizeGroup="Col1" />
             <ColumnDefinition SharedSizeGroup="Col2" />
             <ColumnDefinition SharedSizeGroup="Col3" />
-            <ColumnDefinition SharedSizeGroup="Col4" />
+            <ColumnDefinition Width="90" />
             <ColumnDefinition SharedSizeGroup="Col5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -80,17 +80,17 @@
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col1" />
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col2" />
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col3" />
-                            <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col4" />
+                            <ColumnDefinition Width="90" />
                             <ColumnDefinition Width="auto" MinWidth="80" SharedSizeGroup="Col5" />
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="{Binding SaleId}" Padding="1 0" />
-                        <TextBlock Grid.Column="1" Text="{Binding SaleDate}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="1" Text="{Binding Date}" Padding="1 0" Margin="20 0" />
                         <TextBlock Grid.Column="2" Text="{Binding Total}" Padding="1 0" Margin="20 0" />
                         <WrapPanel Grid.Column="3">
-                            <Button Content="Produtos" Width="50" Background="Goldenrod" />
+                            <Button Content="Produtos" Width="70" Background="Goldenrod" />
                         </WrapPanel>
-                        <TextBlock Grid.Column="4" Text="{Binding Cashier}" Padding="1 0" Margin="20 0" />
+                        <TextBlock Grid.Column="4" Text="{Binding User}" Padding="1 0" Margin="20 0" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
