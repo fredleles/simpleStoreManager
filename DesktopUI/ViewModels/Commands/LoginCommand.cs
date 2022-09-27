@@ -29,10 +29,10 @@ namespace DesktopUI.ViewModels.Commands
         {
             var passwordBox = parameter as PasswordBox;
             Password = passwordBox?.Password ?? "";
-            _ = LogIn();
+            LogIn();
         }
 
-        private async Task LogIn()
+        private async void LogIn()
         {
             try
             {

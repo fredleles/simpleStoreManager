@@ -14,6 +14,7 @@ namespace DesktopUI.Helpers.Events
         {
             services.AddSingleton<IEventChannel<LogOnEvent>, EventChannel<LogOnEvent>>();
             services.AddSingleton<IEventChannel<ChangeViewEvent>, EventChannel<ChangeViewEvent>>();
+            services.AddSingleton<IEventChannel<ListProductsFromSaleEvent>, EventChannel<ListProductsFromSaleEvent>>();
         }
     }
 }
