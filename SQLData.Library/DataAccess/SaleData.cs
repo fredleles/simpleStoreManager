@@ -21,5 +21,11 @@ namespace SQLData.Library.DataAccess
             var output = _sql.LoadData<SaleModel, dynamic>("spSaleGetAll", new { });
             return output;
         }
+
+        public List<SaleProductModel> GetProductsBySaleId(int SaleId)
+        {
+            var output = _sql.LoadData<SaleProductModel, dynamic>("spProductSaleGetById", new { SaleId });
+            return output;
+        }
     }
 }

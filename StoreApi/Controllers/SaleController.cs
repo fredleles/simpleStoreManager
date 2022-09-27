@@ -24,5 +24,12 @@ namespace StoreApi.Controllers
         {
             return _saleData.GetSales();
         }
+
+        [HttpGet]
+        [Route("Products/{SaleId?}")]
+        public List<SaleProductModel> GetProductsBySaleId(int SaleId)
+        {
+            return _saleData.GetProductsBySaleId(SaleId);
+        }
     }
 }
